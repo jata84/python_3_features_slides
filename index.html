@@ -13,6 +13,47 @@
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/monokai.css">
 
+		<style>
+
+
+
+.turn {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+
+			.code_data_comparison_wrapper {
+				width: 100%;
+				overflow: hidden;
+			}
+			.code_data_comparison {
+			    font-size: 0.5em;
+				float: left;
+				width:50%
+			    font-size: 15px;line-height : 15px;
+			}
+
+			.centered-content {
+				text-align: center;
+			}
+
+			.code_data {
+			    font-size: 15px;
+			    line-height : 15px;
+			}
+
+		    .reveal .slides {
+		        text-align: left;
+		    }
+		    .reveal .slides section>* {
+		        margin-left: 0;
+		        margin-right: 0;
+		    }
+		</style>
 		<!-- Printing and PDF exports -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -25,8 +66,336 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Python Features 3.5 > </h2>
+					<p>Novedades del lenguaje desde la versión 3.5 hasta 3.8</p>
+				</section>
+
+				<section>
+					<h4 class="centered-content">Jose Alberto Torres</h4>
+					<p class="centered-content"><img style="border:0;vertical-align:middle;background-color: #191919"  height="42" width="42" data-src="slides/twitter.png"> @jata1984</p>
+					<p class="centered-content"><img style="border:0;vertical-align:middle;background-color: #191919"  height="42" width="42" data-src="slides/github.png"> @jata84</p>
+				</section>
+
+
+				<section>
+					<section>
+						<h4 style="text-align: center;">Soporte para versiones de python</h4>
+						<img style="margin-left: 25%;" height="500"  data-src="slides/images/history.png"></img>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>Python 3.5</h4>
+						<p>PEP 492: Corutinas y sintaxis async await</p>
+						<p>PEP 484: Typehints
+						<p>PEP 498: Formatted string literals</p>
+
+					</section>
+					<section>
+						<h4>PEP 492: Corutinas y sintaxis async await</h4>
+					<div class="fragment"> 
+						<p>Declaración de corutinas con async</p>
+
+											<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:50%" class="fragment">
+														<p>Antes</p>
+								<pre><code data-trim data-noescape>
+						@asyncio.coroutine
+						def read_data(db):
+						    pass
+								</code></pre>
+						</div>
+						<div style="float: left; width:50%" class="fragment">
+							<p>Ahora</p>
+								<pre><code  data-trim data-noescape>
+						async def read_data(db):
+							pass
+								</code></pre>
+						</div>
+						</div>
+
+					</div>
+					<div class="fragment">
+					<p>Gestores de contexto asincronos:</p>
+						<pre><code   data-trim data-noescape>
+	    async with session.transaction():
+	        await session.update(data)
+						</code></pre>
+						<code>	
+						</code>
+					</div>
+					</section>
+					<section>
+						<p>PEP 484: Typehints</p>
+						<p class="fragment" >Tipo Callables</p>
+						<div class="fragment"><pre><code data-trim data-noescape>
+
+from typing import Callable
+
+def feeder(get_next_item: Callable[[], str]) -> None:
+    pass
+						</code></pre>
+						<p >Determina que el tipo función </p>
+						<p >Permite determinar los tipos de los argumentos de la función y sus respuestas</p>
+					</div>
+
+					</section>
+
+					<section>
+						<p>PEP 484: Typehints</p>
+						<p class="fragment" >Tipo Any</p>
+						<div class="fragment"><pre><code data-trim data-noescape>
+
+from typing import Mapping
+
+def use_map(m: Mapping[Any,Any]) -> None:
+    pass
+						</code></pre>
+<p>El type Checker permitirá cualquier operación sobre ese valor</p>
+					</div>
+						
+					</section>
+
+
+					<section>
+						<p>PEP 484: Typehints</p>
+						<p class="fragment" >Tipo Union</p>
+						<div class="fragment"><pre><code data-trim data-noescape>
+
+from typing import Union
+
+def handle_employees(e: Union[Employee, Sequence[Employee]]) -> None:
+    if isinstance(e, Employee):
+        e = [e]
+						</code></pre>
+<p >Permitirá cualquiera de los dos valores introducidos dentro de la unión</p>
+					</div>
+						
+					</section>
+
+
+<section>
+						<p>PEP 498: Literal String Interpolation</p>
+											<div class="fragment">
+					<p>F-strings, formato de cadenas simple</p>
+					</div>
+
+											<div style="width: 100% ;overflow: hidden;">
+						<div class="fragment">
+														<p>Antes</p>
+								<pre><code data-trim data-noescape>
+									name="jose"
+									age=35
+									"mi nombre es {} y mi edad {}".format(name,age)
+								</code></pre>
+						</div>
+						<div class="fragment">
+							<p>Ahora</p>
+								<pre><code data-trim data-noescape>
+								name="jose"
+								age=35
+								f'mi nombre es {name} y mi edad {35}'
+								</code></pre>
+						</div>
+						</div>
+				</section>
+</section>
+
+
+
+				<section>
+					<section>
+						<h4>Python 3.6</h4>
+							<p>PEP 515: Underscores in Numeric Literals</p>
+							<p>PEP 526: Syntax for Variable Annotations</p>
+					</section>
+					<section>
+						<h4>Python 3.6</h4>
+						<p>PEP 515: Underscores in Numeric Literals</p>
+						<div class="fragment">
+							<pre><code data-trim data-noescape>
+								# grouping decimal numbers by thousands
+								amount = 10_000_000.0
+
+								# grouping hexadecimal addresses by words
+								addr = 0xCAFE_F00D
+
+								# grouping bits into nibbles in a binary literal
+								flags = 0b_0011_1111_0100_1110
+
+								# same, for string conversions
+								flags = int('0b_1111_0000', 2)
+							</code></pre>
+						</div>
+
+					</section>
+					<section>
+						<h4>Python 3.6</h4>
+						<p>PEP 526: Syntax for Variable Annotations</p>
+						<div class="fragment">
+							<pre><code data-trim data-noescape>
+								python_version : float  = 3.6
+								infectados_coronavirus : int = 100
+							</code></pre>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>Python 3.7</h4>
+							<p>PEP 553: Built-in breakpoint()</p>
+							<p>PEP 567: Context Variable</p>
+							<p>PEP 557: Data Classes</p>
+					</section>
+<section>
+							<h4>Python 3.7</h4>
+							<p>PEP 553: Built-in breakpoint()</p>
+											<img class="fragment" style="margin-left: 25%;" height="500"  data-src="slides/images/hard_debugger.jpeg"></img>
+</section>
+					<section>
+						<h4>Python 3.7</h4>
+							<p>PEP 553: Built-in breakpoint()</p>
+						<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:50%" class="fragment">
+														<p>Antes</p>
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
+import pdb
+pdb.set_trace()
+								</code></pre>
+						</div>
+						<div style="float: left; width:50%" class="fragment">
+							<p>Ahora</p>
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
+breakpoint()
+								</code></pre>
+						</div>
+						</div>
+						<p class="fragment">En python tenemos los debugger: pdb, ipdb,pudb pdbpp</p>
+						<p class="fragment">Se puede configurar con variables de entorno</p>
+					</section>
+					<section>
+						<h4>Python 3.7</h4>
+						<p>PEP 567: Context Variable</p>
+						<p class="fragment">Al pertenecer al mismo hilo es necesario un mecanismo de almacenamiento de variables</p>
+												<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
+								import contextvars
+
+								current_user = contextvars.ContextVar('current_user',default=None)
+									
+								async def inner():
+									log.debug('Current user: %s',current_user.get())
+								    
+								@routes.get('/{name}')
+								async def handler(request):
+								    current_user.set(request.match_info["name"])
+								    await inner()
+
+								</code></pre>
+						</div></div>
+						
+					</section>
+					<section>
+						<h4>Python 3.7</h4>
+						<p>PEP 557: Data Classes</p>
+												<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
+						class Point(object)
+							def __init__(self, x:float,y:float,z:float=0):
+							    self.x = x
+							    self.y = y
+							    self.z = z
+
+								</code></pre>
+						</div></div>
+
+
+												<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
+@dataclass(init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False)
+class Point:
+    x: float
+    y: float
+    z: float = 0.0
+
+p = Point(1.5, 2.5)
+print(p)   # produces "Point(x=1.5, y=2.5, z=0.0)"
+								</code></pre>
+						</div></div>
+					</section>
+
+				</section>
+				<section>
+					<section>
+						<h4>Python 3.8</h4>
+						<p>PEP 572: Assignment Expressions</p>
+						<p>PEP 570: Positional Arguments</p>
+
+					</section>
+					<section>
+						<h4>Python 3.7</h4>
+						<p>PEP 572: Assignment Expressions (walrus operator)</p>
+						<p class="centered-content" style="font-size:80px">:=</p>
+						<img class="fragment centered_content turn" height="200"  data-src="slides/images/walrus-turn.jpeg"></img>
+					</section>
+
+					<section>
+						<h4>Python 3.8</h4>
+						<p>PEP 572: Assignment Expressions (walrus operator)</p>
+						<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:50%" class="fragment">
+														<p>Antes</p>
+								<pre><code data-trim data-noescape>
+match = pattern.search(data)
+if match:
+    # Do something with match
+
+								</code></pre>
+						</div>
+						<div style="float: left; width:50%" class="fragment">
+							<p>Ahora</p>
+								<pre><code data-trim data-noescape>
+if (match := pattern.search(data)) is not None:
+    # Do something with match
+								</code></pre>
+						</div>
+						</div>
+
+					</section>
+					<section>
+						<h4>Python 3.8</h4>
+						<p>PEP 570: Positional Arguments</p>
+						<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+								<pre><code data-trim data-noescape>
+def f(pos1,pos2,/,pos_or_kwd,*,kwd)
+								</code></pre>
+						</div>
+						<p class="fragment">Antes de la barra, son argumentos únicamente posicionales</p>
+						<p class="fragment">Despues de la barra son posicionales o kewords</p>
+						<p class="fragment">Despues del asterisco son kewords</p>
+						</div>
+
+					</section>
+				</section>
+				<section>
+					<section>
+							<h4 class="centered-content">Muchas Gracias!</h4>
+							<img class="fragment centered_content" height="500"  data-src="slides/images/thanks.jpg"></img>
+					</section>
+					<section>
+							<h4 class="centered-content">¿¿Preguntas??</h4>
+					</section>
+				</section>
+
+
+
 			</div>
 		</div>
 
