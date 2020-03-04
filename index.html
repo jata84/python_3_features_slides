@@ -348,24 +348,25 @@ print(p)   # produces "Point(x=1.5, y=2.5, z=0.0)"
 					<section>
 						<h4>Python 3.8</h4>
 						<p>PEP 572: Assignment Expressions (walrus operator)</p>
-						<div style="width: 100% ;overflow: hidden;">
-						<div style="float: left; width:50%" class="fragment">
-														<p>Antes</p>
-								<pre><code data-trim data-noescape>
+												<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+								Antes
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
 match = pattern.search(data)
 if match:
     # Do something with match
 
 								</code></pre>
-						</div>
-						<div style="float: left; width:50%" class="fragment">
-							<p>Ahora</p>
-								<pre><code data-trim data-noescape>
+						</div></div>
+												<div style="width: 100% ;overflow: hidden;">
+						<div style="float: left; width:100%" class="fragment">
+								Ahora
+								<pre><code style="font-size: 15px;line-height : 15px;" data-trim data-noescape>
 if (match := pattern.search(data)) is not None:
     # Do something with match
+
 								</code></pre>
-						</div>
-						</div>
+						</div></div>
 
 					</section>
 					<section>
